@@ -1,16 +1,7 @@
-import { Card, Modal, Row, Col, Button, Table, Tag } from "antd";
-import { PlayCircleFilled, DownloadOutlined } from "@ant-design/icons";
+import { Row, Col, Button, Table, Tag } from "antd";
 import { css } from "@emotion/core";
-import { useRef, useState, useCallback, useMemo } from "react";
 import ReactPlayer from "react-player";
 
-const iconStyle = css`
-  font-size: 30px !important;
-  color: white !important;
-  &:hover {
-    color: #ff4143;
-  }
-`;
 const Video = ({ image, videoLink, musicLink, videoUrl }) => {
   return (
     <Col>
