@@ -1,0 +1,58 @@
+{
+  "env": {
+    "development": {
+      "presets": [
+        "next/babel",
+        [
+          "@emotion/babel-preset-css-prop",
+          {
+            "autoLabel": true,
+            "labelFormat": "[local]"
+          }
+        ]
+      ]
+    },
+    "production": {
+      "presets": [
+        "next/babel",
+        [
+          "@emotion/babel-preset-css-prop",
+          {
+            "autoLabel": false,
+            "labelFormat": "[local]"
+          }
+        ]
+      ]
+    },
+    "test": {
+      "presets": [
+        [
+          "next/babel",
+          {
+            "preset-env": {
+              "modules": "commonjs"
+            }
+          }
+        ]
+      ]
+    }
+  },
+  "plugins": [
+    [
+      "import",
+      {
+        "libraryName": "antd",
+        "style": true
+      }
+    ],
+    [
+      "module-resolver",
+      {
+        "root": ["./"],
+        "alias": {
+          "~@": "./src"
+        }
+      }
+    ]
+  ]
+}

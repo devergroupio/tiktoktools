@@ -1,0 +1,11 @@
+{
+  "allLanguages": ["vi", "en"],
+  "defaultLanguage": "en",
+  "currentPagesDir": "src/pagesi18n",
+  "finalPagesDir": "src/pages",
+  "localesPath": "locales",
+  "pages": {
+    "/": ["home"]
+  },
+  "defaultLangRedirect": "lang-path"
+}

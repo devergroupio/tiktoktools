@@ -1,0 +1,12 @@
+{
+  "menu-home": "home",
+  "menu-discover": "Discover",
+  "menu-tag-hot": "hot",
+  "lang": "Languages",
+  "title": "Download TikTok Video Without Watermark",
+  "btn-download": "Download",
+  "input-placeholder": "Input Video Link",
+  "input-error-required": "Please input tiktok video link",
+  "input-error-pattern": "The video link isn't a tiktok video link",
+  "btn-processing": "Processing"
+}
