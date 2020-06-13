@@ -4,8 +4,8 @@
   "menu-tag-hot": "hot",
   "lang": "Languages",
   "title": "Download TikTok Video Without Watermark",
-  "btn-download": "Download",
-  "input-placeholder": "Input Video Link",
+  "btn-download": "Get Download Link",
+  "input-placeholder": "https://www.tiktok.com/@milliebobbybrown/video/6826359422969826566",
   "input-error-required": "Please input tiktok video link",
   "input-error-pattern": "The video link isn't a tiktok video link",
   "btn-processing": "Processing"

@@ -4,16 +4,15 @@ import ReactPlayer from "react-player";
 
 const Video = ({ image, videoLink, musicLink, videoUrl }) => {
   return (
-    <Col>
-      <Row
+    <Row align="top">
+      <Col
         css={css`
-          max-width: 300px;
+          width: 300px;
           height: auto;
           max-height: 400px;
           margin: 0 auto;
           .react-player__preview {
-            max-width: 300px !important;
-            max-height: 500px !important;
+            width: 300px !important;
             height: 400px !important;
           }
           video {
@@ -30,15 +29,20 @@ const Video = ({ image, videoLink, musicLink, videoUrl }) => {
           width="100%"
           height="100%"
         />
-      </Row>
-      <Row
+      </Col>
+      <Col
         css={css`
-          margin-top: 20px;
+          margin-left: 20px;
+          @media (max-width: 767px) {
+            margin-left: 0px;
+            margin-top: 20px;
+          }
         `}
       >
         <Table
           columns={[
             {
+              responsive: ["xs", "sm"],
               title: "Video",
               key: "link",
               render: (record) => (
@@ -52,6 +56,8 @@ const Video = ({ image, videoLink, musicLink, videoUrl }) => {
             {
               title: "Format",
               key: "format",
+              responsive: ["xs", "sm"],
+
               dataIndex: "format",
             },
           ]}
@@ -84,8 +90,8 @@ const Video = ({ image, videoLink, musicLink, videoUrl }) => {
             },
           ]}
         ></Table>
-      </Row>
-    </Col>
+      </Col>
+    </Row>
   );
 };
 

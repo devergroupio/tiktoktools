@@ -12,7 +12,8 @@ const Wrapper = styled(Col)`
   background: #202529;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
-  padding: 10px 20px;
+  padding: 20px 20px;
+  min-width: 75%;
   max-width: 80%;
   margin: 0 auto;
   @media (max-width: 576px) {
@@ -21,22 +22,22 @@ const Wrapper = styled(Col)`
   }
 `;
 const ActionButton = styled(Button)`
-  background: #ff4143;
+  background: #ff4143 !important;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 17px;
   height: auto;
   color: white;
   width: 200px;
   &:hover {
-    border-color: #ff4143;
+    border-color: #ff4143 !important;
     color: white;
-    background: #ff4143;
+    background: #ff4143 !important;
     font-weight: bold;
   }
   &:focus {
-    border-color: #ff4143;
+    border-color: #ff4143 !important;
     color: white;
-    background: #ff4143;
+    background: #ff4143 !important;
     font-weight: bold;
   }
 `;
@@ -63,13 +64,6 @@ const DownloadForm = () => {
         setisLoading(false);
       });
   };
-  const DownloadButton = useMemo(() => {
-    return (
-      <ActionButton htmlType="submit" loading={isLoading} autoFocus={false}>
-        {isLoading ? t("home:btn-processing") : t("home:btn-download")}
-      </ActionButton>
-    );
-  }, [isLoading]);
 
   const title = useMemo(() => {
     if (!video) return "Download TikTok Video Without Watermark";
@@ -90,6 +84,7 @@ const DownloadForm = () => {
       {!video && (
         <Form form={form} onFinish={onFormSubmit}>
           <Form.Item
+            label="Tiktok Video Link"
             name="videoLink"
             rules={[
               {
@@ -106,7 +101,15 @@ const DownloadForm = () => {
             <Input placeholder={t("home:input-placeholder")} />
           </Form.Item>
           <Form.Item>
-            <Row justify="center">{DownloadButton}</Row>
+            <Row justify="center">
+              <ActionButton
+                htmlType="submit"
+                loading={isLoading}
+                autoFocus={false}
+              >
+                {isLoading ? t("home:btn-processing") : t("home:btn-download")}
+              </ActionButton>
+            </Row>
           </Form.Item>
         </Form>
       )}

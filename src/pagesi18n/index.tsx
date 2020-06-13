@@ -36,6 +36,7 @@ export default () => {
           min-height: calc(100vh - 62px);
           display: flex;
           padding: 20px;
+          margin-top: 62px;
           justify-content: center;
           align-items: center;
         `}
