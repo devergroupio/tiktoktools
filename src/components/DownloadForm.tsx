@@ -1,11 +1,12 @@
 import styled from "@emotion/styled";
-import { Col, Form, Input, Button, Row } from "antd";
+import { Col, Form, Input, Button, Row, Spin } from "antd";
 import { css } from "@emotion/core";
 import { useState, useMemo } from "react";
 import useTranslation from "next-translate/useTranslation";
 import dynamic from "next/dynamic";
 const Video = dynamic(() => import("~@/components/Video"), {
   ssr: false,
+  loading: () => <Spin size="large" />,
 });
 import http from "~@/utils/http";
 const Wrapper = styled(Col)`
