@@ -2,7 +2,10 @@ import { Global, css } from "@emotion/core";
 import Header from "~@/components/Header";
 import Head from "next/head";
 import DownloadForm from "~@/components/DownloadForm";
+import useTranslation from "next-translate/useTranslation";
+
 export default () => {
+  const { t, lang } = useTranslation();
   return (
     <>
       <Global
@@ -16,7 +19,7 @@ export default () => {
         `}
       />
       <Head>
-        <title>Download TikTok Video</title>
+        <title>{t("home:seo-title")}</title>
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"

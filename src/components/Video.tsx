@@ -1,8 +1,10 @@
 import { Row, Col, Button, Table, Tag } from "antd";
 import { css } from "@emotion/core";
 import ReactPlayer from "react-player";
+import useTranslation from "next-translate/useTranslation";
 
 const Video = ({ image, videoLink, musicLink, videoUrl }) => {
+  const { t } = useTranslation();
   return (
     <Row align="top">
       <Col
@@ -43,18 +45,18 @@ const Video = ({ image, videoLink, musicLink, videoUrl }) => {
           columns={[
             {
               responsive: ["xs", "sm"],
-              title: "Video",
+              title: "",
               key: "link",
               render: (record) => (
                 <a target="_blank" href={record.link} download>
                   <Button type="primary" color={"#ff4143"}>
-                    Download
+                    {t("home:btn-download")}
                   </Button>
                 </a>
               ),
             },
             {
-              title: "Format",
+              title: t("home:table-format"),
               key: "format",
               responsive: ["xs", "sm"],
 
@@ -67,25 +69,29 @@ const Video = ({ image, videoLink, musicLink, videoUrl }) => {
               key: "hd",
               format: (
                 <>
-                  <Tag color="green">HD Quality</Tag>
-                  <Tag color="blue"> Without Watermark</Tag>
+                  <Tag color="green">{t("home:format-hd")}</Tag>
+                  <Tag color="blue">{t("home:format-without-watermark")}</Tag>
                 </>
               ),
-              link: videoLink + "/&improve_bitrate=1&ratio=1080p",
+              link: videoLink + "&improve_bitrate=1&ratio=1080p",
             },
             {
               key: "nowatermark",
-              format: <Tag color="blue"> Without Watermark</Tag>,
+              format: (
+                <Tag color="blue">{t("home:format-without-watermark")}</Tag>
+              ),
               link: videoLink,
             },
             {
               key: "mp3",
-              format: <Tag color="gold"> Mp3</Tag>,
+              format: <Tag color="gold">{t("home:format-mp3")}</Tag>,
               link: musicLink,
             },
             {
               key: "normal",
-              format: <Tag color="error">Normal</Tag>,
+              format: (
+                <Tag color="error">{t("home:format-with-watermark")}</Tag>
+              ),
               link: videoUrl,
             },
           ]}

@@ -1,12 +1,21 @@
 {
   "menu-home": "home",
   "menu-discover": "Discover",
+  "menu-download-video": "Download tiktok video without watermark",
+  "seo-title": "Download tiktok video without watermark",
   "menu-tag-hot": "hot",
   "lang": "Languages",
-  "title": "Download TikTok Video Without Watermark",
-  "btn-download": "Get Download Link",
+  "title": "Download tiktok video without watermark",
+  "btn-download": "Download",
   "input-placeholder": "https://www.tiktok.com/@milliebobbybrown/video/6826359422969826566",
   "input-error-required": "Please input tiktok video link",
   "input-error-pattern": "The video link isn't a tiktok video link",
-  "btn-processing": "Processing"
+  "btn-processing": "Processing",
+  "input-label-link": "Video link",
+  "btn-reset": "Reset",
+  "table-format": "Format",
+  "format-hd": "HD quality",
+  "format-without-watermark": "No watermark",
+  "format-mp3": "Only mp3",
+  "format-with-watermark": "With watermark"
 }

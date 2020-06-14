@@ -67,7 +67,7 @@ const DownloadForm = () => {
   };
 
   const title = useMemo(() => {
-    if (!video) return "Download TikTok Video Without Watermark";
+    if (!video) return t("home:title");
     return "Congratulation! successful";
   }, [video]);
   return (
@@ -85,7 +85,7 @@ const DownloadForm = () => {
       {!video && (
         <Form form={form} onFinish={onFormSubmit}>
           <Form.Item
-            label="Tiktok Video Link"
+            label={t("home:input-label-link")}
             name="videoLink"
             rules={[
               {
@@ -137,7 +137,7 @@ const DownloadForm = () => {
               form.resetFields();
             }}
           >
-            Reset
+            {t("home:btn-reset")}
           </Button>
         )}
       </Row>

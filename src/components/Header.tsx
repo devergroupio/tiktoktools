@@ -7,14 +7,6 @@ import { DownOutlined } from "@ant-design/icons";
 import useTranslation from "next-translate/useTranslation";
 import TranslationLink from "next-translate/Link";
 
-const menu = [
-  {
-    name: "Home",
-    href: "/",
-    tags: [],
-  },
-];
-
 const MenuWrapper = styled.ul`
   display: flex;
   margin: 0;
@@ -49,6 +41,17 @@ const TranslationLinkWrapper = styled.div`
 const NextTranslateLink = styled(TranslationLink)``;
 const Header = () => {
   const { t, lang: currentLang } = useTranslation();
+  const menu = [
+    {
+      name: t("home:menu-download-video"),
+      href: "/download",
+      tags: [],
+    },
+    // {
+    //   name: t("home:menu-download-music"),
+    //   href: "/download",
+    // },
+  ];
   const langs = [
     {
       key: "en",
@@ -102,9 +105,9 @@ const Header = () => {
         >
           {menu.map((item, key) => (
             <MenuItem key={key}>
-              <Link href={item.href}>
+              <TranslationLink href={item.href}>
                 <a>{item.name}</a>
-              </Link>
+              </TranslationLink>
               {item.tags &&
                 item.tags.map((tag, key) => (
                   <Tag color="#FFBC42" key={key}>

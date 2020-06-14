@@ -5,7 +5,8 @@
   "finalPagesDir": "src/pages",
   "localesPath": "locales",
   "pages": {
-    "/": ["home"]
+    "/": ["home"],
+    "/download": ["home"]
   },
-  "defaultLangRedirect": "lang-path"
+  "defaultLangRedirect": "root"
 }
