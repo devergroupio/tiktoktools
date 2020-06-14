@@ -14,7 +14,7 @@ export default () => {
             background: #3c434a;
             padding: 0;
             margin: 0;
-            font-family: "Roboto Mono", monospace;
+            font-family: "Roboto", sans-serif;
           }
         `}
       />
@@ -22,12 +22,10 @@ export default () => {
         <title>{t("home:seo-title")}</title>
         <meta
           name="viewport"
-          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
         />
-        <meta
-          name="description"
-          content="Download tiktok video without logo, watermark"
-        ></meta>
+        <meta name="description" content={t("home:seo-title")}></meta>
+        <meta name="keywords" content={t("home:seo-keywords")}></meta>
         {/* <link
           href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400&display=swap"
           rel="stylesheet"

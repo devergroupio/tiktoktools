@@ -5,7 +5,14 @@ class MyDocument extends Document {
     return (
       <Html lang={clientSideLang()}>
         <Head>
+          <link
+            href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+            rel="stylesheet"
+          />
           <link rel="shortcut icon" type="image/ico" href="/favicon.ico" />
+          <meta name="language" content={clientSideLang()}></meta>
+          <meta name="author" content="devergroup.io"></meta>
+          <meta name="robots" content="index,follow"></meta>
         </Head>
 
         <body>
