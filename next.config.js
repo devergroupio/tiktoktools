@@ -5,6 +5,8 @@ const { getThemeVariables } = require("antd/dist/theme");
 const customConfig = {
   publicRuntimeConfig: {
     BACKEND_URL: process.env.BACKEND_URL,
+    NODE_ENV: process.env.NODE_ENV,
+    GA_TRACKING_ID: process.env.GA_TRACKING_ID,
     // HASURA_GRAPHQL_ADMIN_SECRET: process.env.HASURA_GRAPHQL_ADMIN_SECRET,
   },
 };

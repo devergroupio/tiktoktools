@@ -23,6 +23,7 @@
     "null-loader": "^4.0.0",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
+    "react-no-ssr": "^1.1.0",
     "react-player": "^2.3.0",
     "react-skylight": "^0.5.1"
   },
