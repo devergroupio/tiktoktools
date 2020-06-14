@@ -9,6 +9,7 @@ const Video = dynamic(() => import("~@/components/Video"), {
   loading: () => <Spin size="large" />,
 });
 import http from "~@/utils/http";
+import { CS_CONFIG } from "~@/utils";
 const Wrapper = styled(Col)`
   background: #202529;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -53,7 +54,7 @@ const DownloadForm = () => {
     setVideo(null);
     setisLoading(true);
     http
-      .post("https://tiktok.devergroup.io/video/link", {
+      .post(`${CS_CONFIG.BACKEND_URL}/video/link`, {
         link: values.videoLink,
       })
       .then((res) => {
@@ -92,11 +93,6 @@ const DownloadForm = () => {
                 required: true,
                 message: t("home:input-error-required"),
               },
-              {
-                required: true,
-                message: t("home:input-error-pattern"),
-                pattern: /^(https|http)/,
-              },
             ]}
           >
             <Input placeholder={t("home:input-placeholder")} />
@@ -117,10 +113,13 @@ const DownloadForm = () => {
       {video && (
         <Row justify="center">
           <Video
-            image={video.imageUrl}
-            videoLink={video.videoUrlNoWaterMark}
-            videoUrl={video.videoUrl}
-            musicLink={video.musicMeta.playUrl}
+            id={video.video.id}
+            desc={video.desc}
+            tags={video.video.tags}
+            image={video.video.cover}
+            videoLink={video.video.noWatermark}
+            videoUrl={video.video.watermark}
+            music={video.music}
           />
         </Row>
       )}

@@ -16,6 +16,7 @@
     "antd": "^4.3.3",
     "axios": "^0.19.2",
     "dotenv-safe": "^8.2.0",
+    "file-saver": "^2.0.2",
     "next": "^9.4.4",
     "next-purgecss": "^4.0.0",
     "next-translate": "^0.17.1",
@@ -30,6 +31,7 @@
   },
   "devDependencies": {
     "@emotion/babel-preset-css-prop": "^10.0.27",
+    "@types/file-saver": "^2.0.1",
     "@types/node": "^14.0.13",
     "@types/react": "^16.9.36",
     "babel-plugin-import": "^1.13.0",
