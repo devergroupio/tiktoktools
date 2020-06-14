@@ -11,24 +11,26 @@ class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
-          {process.env.NODE_ENV === "production" && (
-            <>
-              <script
-                async
-                src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GA_TRACKING_ID}`}
-              />
-              <script
-                dangerouslySetInnerHTML={{
-                  __html: `
+          {process.env.NODE_ENV === "production" &&
+            process.env.GA_TRACKING_ID !== null &&
+            process.env.GA_TRACKING_ID !== "null" && (
+              <>
+                <script
+                  async
+                  src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GA_TRACKING_ID}`}
+                />
+                <script
+                  dangerouslySetInnerHTML={{
+                    __html: `
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', '${process.env.GA_TRACKING_ID}');
           `,
-                }}
-              />
-            </>
-          )}
+                  }}
+                />
+              </>
+            )}
         </body>
       </Html>
     );
