@@ -7,6 +7,5 @@
   "pages": {
     "/": ["home"],
     "/download": ["home"]
-  },
-  "defaultLangRedirect": "root"
+  }
 }
