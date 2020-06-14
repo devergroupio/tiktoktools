@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next-translate && next dev",
-    "build": "next-translate && next build",
+    "build": "next-translate && next build && node sitemap.js",
     "start": "next start"
   },
   "dependencies": {
@@ -19,10 +19,12 @@
     "next": "^9.4.4",
     "next-purgecss": "^4.0.0",
     "next-translate": "^0.17.1",
+    "nextjs-sitemap-generator": "^1.0.0",
     "nprogress": "^0.2.0",
     "null-loader": "^4.0.0",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
+    "react-no-ssr": "^1.1.0",
     "react-player": "^2.3.0",
     "react-skylight": "^0.5.1"
   },

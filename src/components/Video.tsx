@@ -1,28 +1,20 @@
-import { Card, Modal, Row, Col, Button, Table, Tag } from "antd";
-import { PlayCircleFilled, DownloadOutlined } from "@ant-design/icons";
+import { Row, Col, Button, Table, Tag } from "antd";
 import { css } from "@emotion/core";
-import { useRef, useState, useCallback, useMemo } from "react";
 import ReactPlayer from "react-player";
+import useTranslation from "next-translate/useTranslation";
 
-const iconStyle = css`
-  font-size: 30px !important;
-  color: white !important;
-  &:hover {
-    color: #ff4143;
-  }
-`;
 const Video = ({ image, videoLink, musicLink, videoUrl }) => {
+  const { t } = useTranslation();
   return (
-    <Col>
-      <Row
+    <Row align="top">
+      <Col
         css={css`
-          max-width: 300px;
+          width: 300px;
           height: auto;
           max-height: 400px;
           margin: 0 auto;
           .react-player__preview {
-            max-width: 300px !important;
-            max-height: 500px !important;
+            width: 300px !important;
             height: 400px !important;
           }
           video {
@@ -39,28 +31,35 @@ const Video = ({ image, videoLink, musicLink, videoUrl }) => {
           width="100%"
           height="100%"
         />
-      </Row>
-      <Row
+      </Col>
+      <Col
         css={css`
-          margin-top: 20px;
+          margin-left: 20px;
+          @media (max-width: 767px) {
+            margin-left: 0px;
+            margin-top: 20px;
+          }
         `}
       >
         <Table
           columns={[
             {
-              title: "Video",
+              responsive: ["xs", "sm"],
+              title: "",
               key: "link",
               render: (record) => (
                 <a target="_blank" href={record.link} download>
                   <Button type="primary" color={"#ff4143"}>
-                    Download
+                    {t("home:btn-download")}
                   </Button>
                 </a>
               ),
             },
             {
-              title: "Format",
+              title: t("home:table-format"),
               key: "format",
+              responsive: ["xs", "sm"],
+
               dataIndex: "format",
             },
           ]}
@@ -70,31 +69,35 @@ const Video = ({ image, videoLink, musicLink, videoUrl }) => {
               key: "hd",
               format: (
                 <>
-                  <Tag color="green">HD Quality</Tag>
-                  <Tag color="blue"> Without Watermark</Tag>
+                  <Tag color="green">{t("home:format-hd")}</Tag>
+                  <Tag color="blue">{t("home:format-without-watermark")}</Tag>
                 </>
               ),
-              link: videoLink + "/&improve_bitrate=1&ratio=1080p",
+              link: videoLink + "&improve_bitrate=1&ratio=1080p",
             },
             {
               key: "nowatermark",
-              format: <Tag color="blue"> Without Watermark</Tag>,
+              format: (
+                <Tag color="blue">{t("home:format-without-watermark")}</Tag>
+              ),
               link: videoLink,
             },
             {
               key: "mp3",
-              format: <Tag color="gold"> Mp3</Tag>,
+              format: <Tag color="gold">{t("home:format-mp3")}</Tag>,
               link: musicLink,
             },
             {
               key: "normal",
-              format: <Tag color="error">Normal</Tag>,
+              format: (
+                <Tag color="error">{t("home:format-with-watermark")}</Tag>
+              ),
               link: videoUrl,
             },
           ]}
         ></Table>
-      </Row>
-    </Col>
+      </Col>
+    </Row>
   );
 };
 

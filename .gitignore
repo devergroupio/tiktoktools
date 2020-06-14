@@ -2,3 +2,4 @@ node_modules
 .next
 src/pages/**
 .env
+sitemap.xml
