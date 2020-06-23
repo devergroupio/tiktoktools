@@ -28,6 +28,7 @@ const err = (error) => {
   }
   return Promise.reject(error);
 };
+
 service.interceptors.request.use((request) => {
   Nprogress.start();
   return request;

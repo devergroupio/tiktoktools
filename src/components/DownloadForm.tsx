@@ -54,7 +54,7 @@ const DownloadForm = () => {
     setVideo(null);
     setisLoading(true);
     http
-      .post(`${CS_CONFIG.BACKEND_URL}/video/link`, {
+      .post(`/video/link`, {
         link: values.videoLink,
       })
       .then((res) => {
