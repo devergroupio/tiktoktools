@@ -1,6 +1,7 @@
 import {createRequest} from './request'
 import DevergroupAxios from 'devergroup-request';
 import { encryptWithXOR } from './helper';
+import fs from 'fs';
 class API {
     request:DevergroupAxios| null = null;
     constructor() {
@@ -66,6 +67,30 @@ class API {
             }
         })
         return data;
+    }
+    
+    async getVideoLinkFromApiLink(url: string) {
+        const request = new DevergroupAxios({
+            autoUserAgent: false,
+            axiosOpt: {
+                timeout: 30* 1000,
+                maxRedirects: 0,
+                headers: {
+                    Accept: '*/*',
+                    'Accept-Language': 'en',
+                    'Host': 'api-h2.tiktokv.com'
+                }
+            },
+            proxy :[],
+            cookieJarString: undefined
+        })
+        try {
+        const {headers} = await request.get(url);
+        console.log(headers);
+        return headers['location']
+        } catch(err) {
+            return err.response.headers['location']
+        }
     }
 
     async login (params) {

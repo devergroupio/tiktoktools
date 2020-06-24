@@ -7,6 +7,7 @@ export const encryptWithXOR = (value: string, key = 5) => value
   .join('');
 
 export const extractVideoLinkInformation = async (link) => {
+    console.log(link);
     const links = Array.from(getUrls(link));
     if(links.length <= 0) {
         throw new Error('NOT_FOUND_VIDEO_LINK')
