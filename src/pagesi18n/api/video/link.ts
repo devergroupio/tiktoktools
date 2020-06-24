@@ -27,7 +27,7 @@ const serializeGlobalVideoData = async (aweme_detail): Promise<ReturningVideoInf
             tags: aweme_detail.text_extra
             .filter((text) => text.hashtag_name && text.hashtag_name.length > 0)
             .map((tag) => tag.hashtag_name),
-            id: aweme_detail.id,
+            id: aweme_detail.aweme_id,
             cover: _.get(aweme_detail,'video.cover.url_list[0]'),
             noWatermark: _.get(aweme_detail, 'video.play_addr.url_list[0]'),
             preview: _.get(aweme_detail, 'video.play_addr.url_list[0]'),

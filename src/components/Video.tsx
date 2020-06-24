@@ -9,18 +9,18 @@ const Video = ({ id, image, videoLink, music, videoUrl, desc, tags }) => {
     return saveAs(link, name);
   };
   const dataSource = [
-    {
-      key: "hd",
-      type: "mp4",
-      format: (
-        <>
-          <Tag color="green">{t("home:format-hd")}</Tag>
-          <Tag color="blue">{t("home:format-without-watermark")}</Tag>
-        </>
-      ),
-      link: videoLink + "&improve_bitrate=1&ratio=1080p",
-      filename: `tiktok-${id}.mp4`,
-    },
+    // {
+    //   key: "hd",
+    //   type: "mp4",
+    //   format: (
+    //     <>
+    //       <Tag color="green">{t("home:format-hd")}</Tag>
+    //       <Tag color="blue">{t("home:format-without-watermark")}</Tag>
+    //     </>
+    //   ),
+    //   link: videoLink + "&improve_bitrate=1&ratio=1080p",
+    //   filename: `tiktok-${id}.mp4`,
+    // },
     {
       key: "nowatermark",
       type: "mp4",
