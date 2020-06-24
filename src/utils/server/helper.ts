@@ -1,6 +1,7 @@
 import getUrls from 'get-urls';
 import DvRequest from 'devergroup-request'
 import _ from 'lodash';
+import axios from 'axios';
 export const encryptWithXOR = (value: string, key = 5) => value
   .split('')
   .map(c => (c.charCodeAt(0) ^ key).toString(16))
@@ -67,3 +68,17 @@ export const getVideoIDLinkFromSharedLink = async (url) => {
       return videoId;
     }
 }
+export const getRedirectLink = async (link) => {
+    try {
+      await axios.get(link, {
+        maxRedirects: 0,
+      });
+      throw new Error("Not support formatted url");
+    } catch (err) {
+      const redirect_url = _.get(err, "response.headers.location");
+      if (!redirect_url) {
+        throw err;
+      }
+      return redirect_url;
+    }
+  };

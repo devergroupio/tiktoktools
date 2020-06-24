@@ -1,7 +1,8 @@
 import {createRequest} from './request'
 import DevergroupAxios from 'devergroup-request';
 import { encryptWithXOR } from './helper';
-import fs from 'fs';
+import axios from 'axios';
+import _ from 'lodash'
 class API {
     request:DevergroupAxios| null = null;
     constructor() {
@@ -66,6 +67,17 @@ class API {
             }
         })
         return data;
+    }
+    
+    async getVideoChinaById(id) {
+        const { data } = await axios.get(
+            `https://www.iesdouyin.com/web/api/v2/aweme/iteminfo/?item_ids=${id}`
+          );
+          const videoInfo = _.get(data, "item_list[0]");
+          if (!videoInfo) {
+            throw new Error("Not support formatted url");
+          }
+          return videoInfo;
     }
     
     async getVideoLinkFromApiLink(url: string) {
