@@ -49,7 +49,6 @@ export const createRequest = (opts: {
         }
 
         request.params = params;
-        console.log(request.params);
 
         return request;
     })

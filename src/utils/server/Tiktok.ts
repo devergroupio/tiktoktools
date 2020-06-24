@@ -23,7 +23,6 @@ class API {
                 user_id: id
             }
         })
-        console.log(data);
         if(data.length <= 0) {
             throw new Error('Request not valid')
         }
@@ -86,7 +85,6 @@ class API {
         })
         try {
         const {headers} = await request.get(url);
-        console.log(headers);
         return headers['location']
         } catch(err) {
             return err.response.headers['location']

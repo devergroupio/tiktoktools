@@ -8,7 +8,7 @@
   "lang": "Languages",
   "title": "Download tiktok video without watermark",
   "btn-download": "Download",
-  "input-placeholder": "https://vt.tiktok.com/AwoE5J/ or https://www.tiktok.com/@milliebobbybrown/video/6826359422969826566",
+  "input-placeholder": "Example: https://vt.tiktok.com/example/ or https://www.tiktok.com/@author/video/videoid",
   "input-error-required": "Please input tiktok video link",
   "input-error-pattern": "The video link isn't a tiktok video link",
   "btn-processing": "Processing",

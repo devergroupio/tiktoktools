@@ -47,7 +47,6 @@ const serializeGlobalVideoData = async (aweme_detail): Promise<ReturningVideoInf
 export default async (req: NextApiRequest, res: NextApiResponse) => {
     try {
     const {link}  = req.body;
-    console.log(link);
     const {url, type, videoId} = await extractVideoLinkInformation(link);
     const {aweme_detail} = await tiktok.getVideo(videoId)
     res.json({

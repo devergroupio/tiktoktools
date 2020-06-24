@@ -4,6 +4,7 @@ import { css } from "@emotion/core";
 import { useState, useMemo } from "react";
 import useTranslation from "next-translate/useTranslation";
 import dynamic from "next/dynamic";
+import NoSSR from "react-no-ssr";
 const Video = dynamic(() => import("~@/components/Video"), {
   ssr: false,
   loading: () => <Spin size="large" />,
@@ -94,9 +95,29 @@ const DownloadForm = () => {
                 message: t("home:input-error-required"),
               },
             ]}
+            css={css`
+              margin-bottom: 10px !important;
+            `}
           >
             <Input placeholder={t("home:input-placeholder")} />
           </Form.Item>
+
+          <NoSSR>
+            <Row
+              css={css`
+                margin-bottom: 10px;
+                word-break: break-word;
+              `}
+            >
+              <Col md = {
+                {
+                  offset: 2
+                }
+              }>
+                <code>{t("home:input-placeholder")} </code>
+              </Col>
+            </Row>
+          </NoSSR>
           <Form.Item>
             <Row justify="center">
               <ActionButton
@@ -140,7 +161,6 @@ const DownloadForm = () => {
           </Button>
         )}
       </Row>
-      {/* {video && <Video />} */}
     </Wrapper>
   );
 };

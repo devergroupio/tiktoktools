@@ -8,7 +8,7 @@
   "title": "Tải video tiktok không logo, không id",
   "menu-download-video": "Tải video tiktok không logo, không id",
   "btn-download": "Tải xuống",
-  "input-placeholder": "https://vt.tiktok.com/AwoE5J/ hoặc https://www.tiktok.com/@milliebobbybrown/video/6826359422969826566",
+  "input-placeholder": "Ví dụ: https://vt.tiktok.com/example/ hoặc https://www.tiktok.com/@author/video/videoid",
   "input-error-required": "Vui lòng nhập đường dẫn",
   "input-error-pattern": "Đường dẫn này không phải là video tiktok",
   "btn-processing": "Đang Xử lý",

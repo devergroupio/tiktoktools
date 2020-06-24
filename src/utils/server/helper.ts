@@ -7,7 +7,6 @@ export const encryptWithXOR = (value: string, key = 5) => value
   .join('');
 
 export const extractVideoLinkInformation = async (link) => {
-    console.log(link);
     const links = Array.from(getUrls(link));
     if(links.length <= 0) {
         throw new Error('NOT_FOUND_VIDEO_LINK')
@@ -25,8 +24,19 @@ export const extractVideoLinkInformation = async (link) => {
     if(!returning.type) {
         throw new Error('NOT_SUPPORT_VIDEO_LINK')
     }
-    const videoId = await getVideoIDLinkFromSharedLink(videoLink);
+    if(videoLink.includes('/video/')) {
+        returning.type = "Global";
+        const regexSearch = videoLink.match(/[0-9]{19,}(?!\?)/);
+        if (!regexSearch) {
+          throw new Error("Not support formatted url");
+        }
+        const videoId = regexSearch[0];
+        returning.videoId = videoId;
+
+    } else {
+        const videoId = await getVideoIDLinkFromSharedLink(videoLink);
     returning.videoId = videoId;
+    }
     return returning;
 }
 
@@ -46,7 +56,6 @@ export const getVideoIDLinkFromSharedLink = async (url) => {
     } catch (err) {
       const redirect_url = _.get(err, "response.headers.location");
       const regexSearch = redirect_url.match(/[0-9]{19,}(?!\?)/);
-      console.log(regexSearch)
       if (!redirect_url) {
         throw err;
       }
