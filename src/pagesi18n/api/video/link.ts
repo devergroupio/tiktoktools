@@ -1,6 +1,7 @@
 import {
     extractVideoLinkInformation,
     getRedirectLink,
+    xorEncrypt,
   } from "~@/utils/server/helper";
   import { NextApiRequest, NextApiResponse } from "next";
   import Tiktok from "~@/utils/server/Tiktok";
@@ -37,16 +38,16 @@ import {
             .map((tag) => tag.hashtag_name),
           id: aweme_detail.aweme_id,
           cover: _.get(aweme_detail, "video.cover.url_list[0]"),
-          noWatermark: _.get(aweme_detail, "video.play_addr.url_list[0]"),
-          preview: _.get(aweme_detail, "video.play_addr.url_list[0]"),
-          watermark: await tiktok.getVideoLinkFromApiLink(
+          noWatermark: xorEncrypt(_.get(aweme_detail, "video.play_addr.url_list[0]")),
+          preview: xorEncrypt(_.get(aweme_detail, "video.play_addr.url_list[0]")),
+          watermark: xorEncrypt(await tiktok.getVideoLinkFromApiLink(
             _.get(aweme_detail, "video.download_addr.url_list[0]")
-          ),
+          )),
         },
         desc: aweme_detail.desc,
         music: {
           author: aweme_detail.music.author,
-          playUrl: aweme_detail.music.play_url.url_list[0],
+          playUrl: xorEncrypt(aweme_detail.music.play_url.url_list[0]),
           id: aweme_detail.music.id,
           title: aweme_detail.music.title,
         },
@@ -60,7 +61,7 @@ import {
           tags: aweme_detail.text_extra
             .filter((text) => text.hashtag_name && text.hashtag_name.length > 0)
             .map((tag) => tag.hashtag_name),
-          watermark: await getRedirectLink(
+          watermark: xorEncrypt(await getRedirectLink(
             qs.stringifyUrl({
               query: {
                 video_id: aweme_detail.video.vid,
@@ -70,8 +71,8 @@ import {
               } as any,
               url: qs.parseUrl(aweme_detail.video.play_addr.url_list[0]).url,
             })
-          ),
-          noWatermark: await getRedirectLink(
+          )),
+          noWatermark: xorEncrypt(await getRedirectLink(
             qs.stringifyUrl({
               query: {
                 video_id: aweme_detail.video.vid,
@@ -84,7 +85,7 @@ import {
               } as any,
               url: `https://aweme-hl.snssdk.com/aweme/v1/play/`,
             })
-          ),
+          )),
   
           preview: await getRedirectLink(
             qs.stringifyUrl({
@@ -105,7 +106,7 @@ import {
         },
         music: {
           id: aweme_detail.music.mid,
-          playUrl: aweme_detail.music.play_url.url_list[0],
+          playUrl: xorEncrypt(aweme_detail.music.play_url.url_list[0]),
           title: aweme_detail.music.title,
           // duration: payload.music.duration,
           author: aweme_detail.music.author,
@@ -118,7 +119,6 @@ import {
     try {
       const { link } = req.body;
       const { url, type, videoId } = await extractVideoLinkInformation(link);
-      console.log("videoId", videoId);
       let aweme_detail = null;
       if (type === "Global") {
         const { aweme_detail: data } = await tiktok.getVideo(videoId);
@@ -126,7 +126,6 @@ import {
       } else {
         aweme_detail = await tiktok.getVideoChinaById(videoId);
       }
-      console.log(aweme_detail);
       if (!aweme_detail) {
         throw new Error("NOT_SUPPORT_VIDEO_LINK");
       }

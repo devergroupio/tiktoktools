@@ -2,6 +2,7 @@ import getUrls from 'get-urls';
 import DvRequest from 'devergroup-request'
 import _ from 'lodash';
 import axios from 'axios';
+import * as xor from 'xor-crypt';
 export const encryptWithXOR = (value: string, key = 5) => value
   .split('')
   .map(c => (c.charCodeAt(0) ^ key).toString(16))
@@ -68,6 +69,7 @@ export const getVideoIDLinkFromSharedLink = async (url) => {
       return videoId;
     }
 }
+
 export const getRedirectLink = async (link) => {
     try {
       await axios.get(link, {
@@ -82,3 +84,14 @@ export const getRedirectLink = async (link) => {
       return redirect_url;
     }
   };
+
+const PASSWORD = 1996;
+export const xorEncrypt = (message: string) => {
+  console.log('encrypt', xor(message,PASSWORD ))
+  return xor(message,PASSWORD )
+}
+
+export const xorDecrypt = (message: string) => {
+  console.log('decrypt', xor(message,PASSWORD))
+  return xor(message, PASSWORD);
+}

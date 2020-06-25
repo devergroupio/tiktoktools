@@ -7200,6 +7200,11 @@ wrappy@1:
   resolved "https://registry.yarnpkg.com/wrappy/-/wrappy-1.0.2.tgz#b5243d8f3ec1aa35f1364605bc0d1036e30ab69f"
   integrity sha1-tSQ9jz7BqjXxNkYFvA0QNuMKtp8=
 
+xor-crypt@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/xor-crypt/-/xor-crypt-1.1.1.tgz#d5a7e710987398a044baa24a3b0f02d3e02a93e1"
+  integrity sha1-1afnEJhzmKBEuqJKOw8C0+Aqk+E=
+
 xtend@^4.0.0, xtend@~4.0.1:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/xtend/-/xtend-4.0.2.tgz#bb72779f5fa465186b1f438f674fa347fdb5db54"

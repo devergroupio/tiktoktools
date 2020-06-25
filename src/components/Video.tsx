@@ -5,9 +5,9 @@ import useTranslation from "next-translate/useTranslation";
 import { saveAs } from "file-saver";
 const Video = ({ id, image, videoLink, music, videoUrl, desc, tags }) => {
   const { t } = useTranslation();
-  const download = (link, name) => {
-    return saveAs(link, name);
-  };
+  // const download = (link, name) => {
+  //   return saveAs(`/api/video/download?hashed =${link}`, name);
+  // };
   const dataSource = [
     // {
     //   key: "hd",
@@ -99,13 +99,15 @@ const Video = ({ id, image, videoLink, music, videoUrl, desc, tags }) => {
                 title: "",
                 key: "link",
                 render: (record) => (
-                  <Button
+                  <a
                     type="primary"
                     color={"#ff4143"}
-                    onClick={() => download(record.link, record.filename)}
+                    href = {`/api/video/download?hashed=${record.link}`}
+                    download = {record.filename}
+                    // onClick={() => download(record.link, record.filename)}
                   >
                     {t("home:btn-download")}
-                  </Button>
+                  </a>
                   // <a target="_blank" href={record.link} download>
 
                   // </a>
