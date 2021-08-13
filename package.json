@@ -20,7 +20,7 @@
     "file-saver": "^2.0.2",
     "get-urls": "^9.2.0",
     "lodash": "^4.17.15",
-    "next": "^9.4.4",
+    "next": "^11.1.0",
     "next-purgecss": "^4.0.0",
     "next-translate": "^0.17.1",
     "nextjs-sitemap-generator": "^1.0.0",
